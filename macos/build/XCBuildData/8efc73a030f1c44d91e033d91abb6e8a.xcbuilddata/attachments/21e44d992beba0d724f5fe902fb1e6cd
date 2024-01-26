@@ -1,0 +1,15 @@
+{
+  "" : {
+    "const-values" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/flutter_local_notifications-master.swiftconstvalues",
+    "dependencies" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/flutter_local_notifications-master.d",
+    "diagnostics" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/flutter_local_notifications-master.dia",
+    "emit-module-dependencies" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/flutter_local_notifications-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/flutter_local_notifications-master-emit-module.dia",
+    "swift-dependencies" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/flutter_local_notifications-master.swiftdeps"
+  },
+  "/Users/joellungu/.pub-cache/hosted/pub.dev/flutter_local_notifications-16.3.0/macos/Classes/FlutterLocalNotificationsPlugin.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/FlutterLocalNotificationsPlugin.o",
+    "llvm-bc" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/FlutterLocalNotificationsPlugin.bc",
+    "object" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/flutter_local_notifications.build/Objects-normal/x86_64/FlutterLocalNotificationsPlugin.o"
+  }
+}

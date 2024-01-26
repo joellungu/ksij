@@ -11,7 +11,7 @@ import 'login_controller.dart';
 class Login extends StatelessWidget {
   //
   final formKey = GlobalKey<FormState>();
-  final email = TextEditingController();
+  final telephone = TextEditingController();
   final mdp = TextEditingController();
   //
   RxBool vue = true.obs;
@@ -31,7 +31,7 @@ class Login extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: const Text(
-              "Connexion",
+              "Al Masoomeen Madressa",
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -73,7 +73,7 @@ class Login extends StatelessWidget {
                       const Align(
                         alignment: Alignment.center,
                         child: Text(
-                          "Connectez-vous pour avoir accès au contenu du cours",
+                          "Please log in to get access to your class.",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
@@ -85,10 +85,10 @@ class Login extends StatelessWidget {
                         height: 70,
                       ),
                       TextFormField(
-                        controller: email,
+                        controller: telephone,
                         validator: (e) {
                           if (e!.isEmpty) {
-                            return "Veuilliez inserer votre email";
+                            return "Splease give your phone number";
                           }
                           return null;
                         },
@@ -97,8 +97,8 @@ class Login extends StatelessWidget {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          prefixIcon: const Icon(Icons.email),
-                          hintText: "Email",
+                          prefixIcon: const Icon(Icons.phone_android),
+                          hintText: "Phone",
                         ),
                       ),
                       const SizedBox(
@@ -110,7 +110,7 @@ class Login extends StatelessWidget {
                           obscureText: masquer.value,
                           validator: (e) {
                             if (e!.isEmpty) {
-                              return "Please put your email";
+                              return "Please put your password";
                             }
                             return null;
                           },
@@ -130,7 +130,7 @@ class Login extends StatelessWidget {
                                 },
                               ),
                             ),
-                            hintText: "Pass word",
+                            hintText: "Password",
                           ),
                         ),
                       ),
@@ -154,11 +154,12 @@ class Login extends StatelessWidget {
                             //   Get.off(Accueil());
                             // });
                             Map e = {
-                              "email": email.text,
+                              "telephone": telephone.text,
                               "pwd": mdp.text,
                             };
-                            //loginController.login(e);
-                            Get.to(Cours());
+                            //Get.back();
+                            loginController.login(e);
+                            //Get.to(Cours());
                             //loginController.deja.value = true;
                           }
                         },

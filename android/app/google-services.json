@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "482284518295",
+    "project_id": "ksij-kinshasa",
+    "storage_bucket": "ksij-kinshasa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482284518295:android:dad94b25dd621b9001a2d2",
+        "android_client_info": {
+          "package_name": "com.example.ksij_kinshasa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCozAHyXC2Of4DS58fYExLmPG5ldWeg3-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

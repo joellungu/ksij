@@ -1,0 +1,15 @@
+{
+  "" : {
+    "const-values" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/syncfusion_pdfviewer_macos-master.swiftconstvalues",
+    "dependencies" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/syncfusion_pdfviewer_macos-master.d",
+    "diagnostics" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/syncfusion_pdfviewer_macos-master.dia",
+    "emit-module-dependencies" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/syncfusion_pdfviewer_macos-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/syncfusion_pdfviewer_macos-master-emit-module.dia",
+    "swift-dependencies" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/syncfusion_pdfviewer_macos-master.swiftdeps"
+  },
+  "/Users/joellungu/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_macos-23.1.40/macos/Classes/SyncfusionFlutterPdfViewerPlugin.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/SyncfusionFlutterPdfViewerPlugin.o",
+    "llvm-bc" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/SyncfusionFlutterPdfViewerPlugin.bc",
+    "object" : "/Users/joellungu/flutterprojets/ksij_kinshasa/macos/build/Pods.build/Release/syncfusion_pdfviewer_macos.build/Objects-normal/x86_64/SyncfusionFlutterPdfViewerPlugin.o"
+  }
+}

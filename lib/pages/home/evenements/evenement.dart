@@ -1,122 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:get/get.dart';
 import 'package:ksij_kinshasa/pages/home/evenements/evenement_controller.dart';
+import 'package:ksij_kinshasa/utils/langi.dart';
 
 class Evenements extends GetView<EvenementController> {
   @override
   Widget build(BuildContext context) {
     //
-    return ListView(
-      padding: const EdgeInsets.all(10),
-      children: List.generate(10, (index) {
-        return Card(
-          elevation: 1,
-          child: InkWell(
-            onTap: () {
-              //
-              //Get.to(DetailsTest());
-              //
-            },
+    return FutureBuilder(
+      future: controller.allEvents(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          List cards = snapshot.data!;
+          return Center(
             child: Container(
-              height: 150,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    flex: 7,
-                    child: Container(
-                      child: ListTile(
-                        // leading: Container(
-                        //   height: 50,
-                        //   width: 50,
-                        //   alignment: Alignment.center,
-                        //   child: Icon(
-                        //     CupertinoIcons.person,
-                        //     color: Colors.black,
-                        //     size: 35,
-                        //   ),
-                        //   decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(25),
-                        //       color: Colors.deepPurple.shade100
-                        //           .withOpacity(0.7)),
-                        // ),
-                        title: Text(
-                          "Fete nationale de martyre",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                          ),
-                        ),
-                        subtitle: Text(
-                          "Gagnez de nombreux prix en participant aux Challenges",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 1,
-                    color: Colors.grey,
-                    width: double.maxFinite,
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            flex: 6,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Corporation",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    color: index % 2 == 2
-                                        ? Colors.red
-                                        : index % 2 == 1
-                                            ? Colors.green
-                                            : Colors.yellow.shade900,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 5,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "10 Jan, 2023",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              height: 70,
+              width: Get.size.width,
+              // child: ListView(
+              //   scrollDirection: Axis.horizontal,
+              //   children: List.generate(cards.length, (index) {
+              //     Map card = cards[index];
+              //     print("card: $card");
+              //     return Container(
+              //       height: 70,
+              //       width: Get.size.width / 1.2,
+              //       decoration: BoxDecoration(
+              //         border: Border.all(color: Colors.black),
+              //       ),
+              //       child: ListTile(
+              //         title: Text("${card['titre']}"),
+              //         subtitle: Text(
+              //           "${card['contenu']}",
+              //           overflow: TextOverflow.ellipsis,
+              //           maxLines: 2,
+              //         ),
+              //       ),
+              //     );
+              //   }),
+              // ),
             ),
+          );
+        } else if (snapshot.hasError) {
+          return Container();
+        }
+        return Center(
+          child: SizedBox(
+            height: 40,
+            width: 40,
+            child: CircularProgressIndicator(),
           ),
         );
-      }),
+      },
     );
   }
 }

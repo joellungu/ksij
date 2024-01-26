@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:ksij_kinshasa/pages/horaires/horaire_controller.dart';
 import 'package:ksij_kinshasa/utils/langi.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -18,6 +19,11 @@ class Horaire extends GetView<HoraireController> {
     {"priere": "Maghrib", "heure": "4:58 pm"},
   ];
   //
+  Horaire() {
+    controller.allPrayOfDay(
+        "${date.value.day}-${date.value.month}-${date.value.year}");
+  }
+  //
   @override
   Widget build(BuildContext context) {
     //
@@ -29,7 +35,7 @@ class Horaire extends GetView<HoraireController> {
             backgroundColor: Langi.base1,
             centerTitle: true,
             title: const Text(
-              "Horaire de prière",
+              "Namaaz Timings",
               style: TextStyle(
                 color: Colors.white,
               ),
@@ -54,8 +60,13 @@ class Horaire extends GetView<HoraireController> {
                       )),
                       onDaySelected: (d, t) {
                         date.value = d;
+
                         print("d: $d");
                         print("t: $t");
+                        //
+                        controller.allPrayOfDay(
+                            "${date.value.day}-${date.value.month}-${date.value.year}");
+                        //
                       },
                     ),
                   ),
@@ -68,67 +79,90 @@ class Horaire extends GetView<HoraireController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                          alignment: Alignment.center,
-                          //height: 50,
-                          width: double.maxFinite,
-                          decoration: BoxDecoration(
-                            color: Langi.base1,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                            ),
+                        alignment: Alignment.center,
+                        //height: 50,
+                        width: double.maxFinite,
+                        decoration: BoxDecoration(
+                          color: Langi.base1,
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
                           ),
-                          child: Column(
-                            children: [
-                              Container(
-                                alignment: Alignment.center,
-                                height: 50,
-                                child: Text(""),
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                  color: Langi.base1,
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    topRight: Radius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              height: 50,
+                              width: double.maxFinite,
+                              decoration: BoxDecoration(
+                                color: Langi.base1,
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                              ),
+                              child: Obx(
+                                () => Text(
+                                  dateFormater(
+                                      "${date.value.day}-${date.value.month}-${date.value.year}"),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
                                   ),
                                 ),
                               ),
-                              Column(
-                                children:
-                                    List.generate(horaires.length, (index) {
-                                  Map h = horaires[index];
-                                  return Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20),
-                                    height: 40,
-                                    color: index % 2 == 1
-                                        ? Colors.grey.shade200
-                                        : Colors.white,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          flex: 4,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text("${h['priere']}"),
+                            ),
+                            controller.obx(
+                              (state) {
+                                Map o = state!;
+                                List hs = o['horaires'];
+                                return Column(
+                                  children: List.generate(hs.length, (index) {
+                                    Map h = hs[index];
+                                    return Container(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 20),
+                                      height: 40,
+                                      color: index % 2 == 1
+                                          ? Colors.grey.shade200
+                                          : Colors.white,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            flex: 4,
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text("${h['priere']}"),
+                                            ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          flex: 6,
-                                          child: Container(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text("${h['heure']}"),
+                                          Expanded(
+                                            flex: 6,
+                                            child: Container(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text("${h['heure']}"),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                );
+                              },
+                              onEmpty: Container(),
+                              onLoading: Center(
+                                child: Container(
+                                  height: 40,
+                                  width: 40,
+                                  child: const CircularProgressIndicator(),
+                                ),
                               ),
-                            ],
-                          ))
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -138,5 +172,15 @@ class Horaire extends GetView<HoraireController> {
         ),
       ),
     );
+  }
+
+  String dateFormater(String date) {
+    List ds = date.split("-");
+    print("ds: $ds");
+    DateTime now =
+        DateTime(int.parse(ds[2]), int.parse(ds[1]), int.parse(ds[0]));
+    String formattedDate = DateFormat('EEEE, MMM d, yyyy').format(now);
+    print(formattedDate);
+    return formattedDate;
   }
 }
